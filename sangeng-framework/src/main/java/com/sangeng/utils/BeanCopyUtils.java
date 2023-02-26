@@ -27,7 +27,7 @@ public class BeanCopyUtils {
 
     public static <O, V> List<V> copyBeanList(List<O> list, Class<V> clazz){
         return list.stream()
-                .map(o -> copyBean(0, clazz))
+                .map(o -> copyBean(o, clazz))
                 .collect(Collectors.toList());
     }
 
