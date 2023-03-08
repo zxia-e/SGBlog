@@ -1,6 +1,7 @@
 package com.sangeng.config;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +16,8 @@ import javax.servlet.Filter;
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+    @Autowired
+    JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
     @Override
     @Bean
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -47,7 +49,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.logout().disable();
         //把jwtAuthenticationTokenFilter添加到SpringSecurity的过滤器链中
-        Filter jwtAuthenticationTokenFilter = null;
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
         //允许跨域
         http.cors();
