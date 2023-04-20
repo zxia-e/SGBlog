@@ -16,6 +16,7 @@ import java.util.Objects;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //根据用户名查询用户信息
@@ -24,17 +25,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         User user = userMapper.selectOne(queryWrapper);
 
         //判断是否查到用户，若没有则抛出异常
-        if(Objects.isNull(user)) {
+        if (Objects.isNull(user)) {
             throw new RuntimeException("用户不存在");
         }
 
         //返回用户信息
         //Todo查询权限信息封装
         return new LoginUser(user);
-
-
-
-
-
     }
 }

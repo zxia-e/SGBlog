@@ -16,7 +16,8 @@ import java.util.List;
 public class ArticleController {
     @Autowired
     private ArticleService articleService;
-//    @GetMapping("/list")
+
+    //    @GetMapping("/list")
 //    public List<Article> test(){
 //        return articleService.list();
 //    }
@@ -32,7 +33,6 @@ public class ArticleController {
     public ResponseResult articleList(Integer pageNum, Integer pageSize, Long categoryId) {
         return articleService.articleList(pageNum, pageSize, categoryId);
     }
-
 
 
     @GetMapping("/{id}")
