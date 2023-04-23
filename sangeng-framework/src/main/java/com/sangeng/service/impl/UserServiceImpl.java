@@ -105,5 +105,4 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         queryWrapper.eq(User::getUserName, userName);
         return count(queryWrapper) > 0;
     }
-
 }
