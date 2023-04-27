@@ -20,3 +20,6 @@ spring:
         logic-delete-value: 1
         logic-not-delete-value: 0
         id-type: auto
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

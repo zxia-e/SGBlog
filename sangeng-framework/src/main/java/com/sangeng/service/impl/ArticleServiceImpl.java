@@ -109,6 +109,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //根据id查询文章
         Article article = getById(id);
 
+        //从redis中获取viewCount
+        Integer viewCount = redisCache.getCacheMapValue("article:viewCount", id.toString());
+        article.setViewCount(viewCount.longValue());
 
         //转换成Vo
         ArticleDetailVo articleDetailVo = BeanCopyUtils.copyBean(article, ArticleDetailVo.class);
@@ -119,10 +122,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         if(category != null) {
             articleDetailVo.setCategoryName(category.getName());
         }
-
-
-
-
         //封装相应返回
         return ResponseResult.okResult(articleDetailVo);
     }
@@ -130,7 +129,6 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public ResponseResult updateViewCount(Long id) {
         //更新redis中对用id的浏览量
-
         redisCache.incrementCacheMapValue("article:viewCount", id.toString(), 1);
         return ResponseResult.okResult();
     }
