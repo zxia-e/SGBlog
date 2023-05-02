@@ -3,11 +3,13 @@ package com.sangeng.domain.entity;
 import java.util.Date;
 
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * 用户表(User)表实体类
  *
@@ -19,10 +21,9 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sys_user")
-public class User  {
+public class User {
     //主键@TableId
     private Long id;
-
     //用户名
     private String userName;
     //昵称
@@ -51,7 +52,4 @@ public class User  {
     private Date updateTime;
     //删除标志（0代表未删除，1代表已删除）
     private Integer delFlag;
-
-
-
 }
