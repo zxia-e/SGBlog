@@ -3,11 +3,13 @@ package com.sangeng.domain.entity;
 import java.util.Date;
 
 import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 /**
  * 角色信息表(Role)表实体类
  *
@@ -19,7 +21,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sys_role")
-public class Role  {
+public class Role {
     //角色ID@TableId
     private Long id;
 
@@ -43,7 +45,6 @@ public class Role  {
     private Date updateTime;
     //备注
     private String remark;
-
 
 
 }

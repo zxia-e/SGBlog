@@ -24,7 +24,6 @@ public class LogAspect {
 
     }
 
-
     @Around("pt()")
     public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
 
